@@ -7,7 +7,8 @@ $(function() {
     var $resultBtn = $('#resultBtn');
 
     $plateBtn.click(function() {
-        var money = "${user.gold}";
+        var money = document.getElementById("gold").innerText;
+            //"${user.gold}";
         if(money<500){
             alert("金币不足，不能抽奖");
             return;
@@ -83,7 +84,8 @@ $(function() {
 
     $resultBtn.click(function() {
         $result.hide();
-        var money = "${user.gold}";
+        var money = document.getElementById("gold").innerText;
+            //"${user.gold}";
         if(money>=500){
             $.ajax({
                 type: "post",

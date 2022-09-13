@@ -1,15 +1,16 @@
 package com.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.entity.User;
+import com.service.ICommodityService;
+import com.service.IPartsService;
+import com.service.IShoppingCartService;
+import com.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import com.entity.User;
-import com.service.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/login")
@@ -29,7 +30,7 @@ public class LoginController {
 
     @RequestMapping("/dengru")
     @ResponseBody
-    public String dengRu(String username, String password, HttpServletRequest http){//登录
+    public String dengRu(String username, String password, HttpServletRequest http){//登入
         User user = userService.queryUserByName(username);
         if(user == null){
             return "11";

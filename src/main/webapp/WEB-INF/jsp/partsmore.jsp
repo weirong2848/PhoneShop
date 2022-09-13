@@ -71,14 +71,14 @@
             <tr>
                 <ul>
                     <li>
-                        <a href="inparts?model=${parts.model}">
+                        <a href="inparts?commodityId=${parts.commodityId}">
                             <img src="${parts.picture}"style=" margin:0 auto; display:block; width:220px; height:220px">
                         </a>
                         <light1>
                             <img src="../images/saoguang.png">
                         </light1>
                         <span><td>${parts.price}</td>元</span>
-                        <a href="inparts?model=${parts.model}">
+                        <a href="inparts?commodityId=${parts.commodityId}">
                             <p><td>${parts.model}</td></p>
                         </a>
                     </li>

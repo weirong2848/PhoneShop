@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 弃用
+ */
 @Repository
 public interface IPartsMapper {
     @Select("select * from tb_parts")

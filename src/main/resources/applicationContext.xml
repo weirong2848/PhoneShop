@@ -23,12 +23,10 @@
     <property name="driverClassName"
               value="com.mysql.jdbc.Driver"></property>
     <property name="url"
-              value="jdbc:mysql://localhost:3306/phoneshop?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true" />
+              value="jdbc:mysql://localhost:3306/phoneshop?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true&amp;useSSL=false" />
     <property name="username" value="root"></property>
-    <property name="password" value="1234"></property>
-    <!--配置文件-->
-<!--     <property name="mapperLocations"> <list> <value>classpath:com/mapper/*.xml</value>-->
-<!--			</list> </property>-->
+    <property name="password" value="123456"></property>
+
     </bean>
 
     <bean id="sqlSessionFactory"
@@ -36,6 +34,7 @@
         <property name="dataSource" ref="dataSource"></property>
         <property name="configLocation"
                   value="classpath:mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property><!--写sql的xml位置-->
     </bean>
 
     <!-- 配置SqlSessionTemplate -->

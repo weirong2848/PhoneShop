@@ -164,7 +164,7 @@
             </ul>
             <div class="panelContainer">
                 <div class="panel" id="panel01">
-                    <p><td>${parts.details}</td></p>
+                    <p><td>${parts.commoditydetails}</td></p>
                 </div>
             </div>
         </div>

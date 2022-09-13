@@ -13,6 +13,7 @@
     <title>收索结果</title>
     <script src="../js/jquery-1.9.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/commodityMore.css">
     <script src="../js/jquery.fly.min.js"></script>
     <script src="../js/public.js"></script>
     <script src="../js/base.js"></script>
@@ -65,44 +66,70 @@
 </section>
 <div>
     <div class="currency f-1-lt01">
-        <c:forEach items="${list1}" var="commodity">
+        <c:forEach items="${pageInfo.list}" var="commodity">
             <tr>
                 <ul>
                     <li>
-                        <a href="inCommodity?model=${commodity.model}">
+                        <c:if test="${commodity.category == 3}">
+                            <a href="inparts?commodityId=${commodity.commodityId}">
+                                <img src="${commodity.picture}"style=" margin:0 auto; display:block; width:220px; height:220px">
+                            </a>
+                            <light1>
+                                <img src="../images/saoguang.png">
+                            </light1>
+                            <span><td>${commodity.price}</td>元起</span>
+                            <a href="inparts?commodityId=${commodity.commodityId}">
+                                <p><td>${commodity.model}</td></p>
+                            </a>
+                        </c:if>
+
+                        <c:if test="${commodity.category == 1 || commodity.category == 2}">
+                        <a href="inCommodity?commodityId=${commodity.commodityId}">
                             <img src="${commodity.picture}"style=" margin:0 auto; display:block; width:220px; height:220px">
                         </a>
                         <light1>
                             <img src="../images/saoguang.png">
                         </light1>
-                        <span><td>${commodity.price1}</td>元起</span>
-                        <a href="inphone?model=${commodity.model}">
+                        <span><td>${commodity.minPrice}</td>元起</span>
+                        <a href="inphone?commodityId=${commodity.commodityId}">
                             <p><td>${commodity.model}</td></p>
                         </a>
-                    </li>
-                </ul>
-            </tr>
-        </c:forEach>
-
-        <c:forEach items="${list3}" var="parts">
-            <tr>
-                <ul>
-                    <li>
-                        <a href="inparts?model=${parts.model}">
-                            <img src="${parts.picture}"style=" margin:0 auto; display:block; width:220px; height:220px">
-                        </a>
-                        <light1>
-                            <img src="../images/saoguang.png">
-                        </light1>
-                        <span><td>${parts.price}</td>元</span>
-                        <a href="inparts?model=${parts.model}">
-                            <p><td>${parts.model}</td></p>
-                        </a>
+                        </c:if>
                     </li>
                 </ul>
             </tr>
         </c:forEach>
     </div>
+    <div class="page" style="text-align: center;font-size: 15px;" id="p"><br/>
+        <div class="pagelist">当前第${pageInfo.pageNum}页,总共${pageInfo.pages}页<br/><br/>
+            <a href="search?pageNo=1&world=${world}"><span class="white button">首页</span></a>
+            <a href="search?pageNo=${pageinfo.pageNum-1}&world=${world}"><span class="white button">上一页</span></a>
+            <c:forEach items="${pageInfo.navigatepageNums}" var="pageNo">
+                <a href="search?pageNo=${pageNo}&world=${world}"><span class="white button">${pageNo}</span></a>
+            </c:forEach>
+            <a href="search?pageNo=${pageInfo.pageNum+1}&world=${world}"><span class="white button">下一页</span></a>
+            <a href="search?pageNo=${pageInfo.pages}&world=${world}"><span class="white button">末页</span></a>
+        </div>
+    </div>
 </div>
+<footer>
+    <div class="pc-footer-lin">
+        <div class="center">
+            <p>友情链接：
+                <a href="https://www.mi.com/" target="_blank">小米官网</a>
+                <a href="https://www.apple.com/cn/" target="_blank">苹果官网</a>
+                <a href="https://www.huawei.com/cn/" target="_blank">华为官网</a>
+                <a href="http://www.oppo.com/cn/" target="_blank">OPPO官网</a>
+                <a href="https://www.samsung.com/cn/" target="_blank">三星官网</a>
+                <a href="http://www.honor.cn/" target="_blank">荣耀官网</a>
+                <a href="https://www.vivo.com/" target="_blank">VIVO官网</a>
+                <a href="https://www.meizu.com/" target="_blank">魅族官网</a>
+                <a href="https://www.oneplus.com/cn" target="_blank">一加官网</a>
+            </p>
+            <p style="padding-bottom:30px">Copyright©2019-2019 版权所有 菲尔普斯数码城 </p>
+        </div>
+    </div>
+    </div>
+</footer>
 </body>
 </html>

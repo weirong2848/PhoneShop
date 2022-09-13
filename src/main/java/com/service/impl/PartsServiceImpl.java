@@ -8,6 +8,9 @@ import com.service.IPartsService;
 
 import java.util.List;
 
+/**
+ * 弃用
+ */
 @Service("partsService")
 public class PartsServiceImpl implements IPartsService {
 

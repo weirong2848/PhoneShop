@@ -61,7 +61,7 @@
             <a href="../main/success">首页</a>
             <a href="../main/moreOrOneBrandMoreCommodity?category=1">手机</a>
             <a href="../main/moreOrOneBrandMoreCommodity?category=2">平板电脑</a>
-            <a href="../main/moreOrOneKindMoreParts">配件</a>
+            <a href="../main/moreOrOneBrandMoreCommodity?category=3">配件</a>
         </div>
     </nav>
 </section>
@@ -71,14 +71,14 @@
             <tr>
                 <ul>
                     <li>
-                        <a href="inCommodity?model=${commodity.model}">
+                        <a href="inCommodity?commodityId=${commodity.commodityId}">
                             <img src="${commodity.picture}"style=" margin:0 auto; display:block; width:220px; height:220px">
                         </a>
                         <light1>
                             <img src="../images/saoguang.png">
                         </light1>
-                        <span><td>${commodity.price1}</td>元起</span>
-                        <a href="inCommodity?model=${commodity.model}">
+                        <span><td>${commodity.minPrice}</td>元起</span>
+                        <a href="inCommodity?commodityId=${commodity.commodityId}">
                             <p><td>${commodity.model}</td></p>
                         </a>
                     </li>
@@ -88,13 +88,43 @@
     </div>
     <div class="page" style="text-align: center;font-size: 15px;" id="p"><br/>
         <div class="pagelist">当前第${pageInfo.pageNum}页,总共${pageInfo.pages}页<br/><br/>
-            <a href="moreOrOneBrandMoreCommodity?pageNo=1&category=${category}&brand=${brand}"><span class="white button">首页</span></a>
-            <a href="moreOrOneBrandMoreCommodity?pageNo=${pageinfo.pageNum-1}&category=${category}&brand=${brand}"><span class="white button">上一页</span></a>
+            <a href="moreOrOneBrandMoreCommodity?pageNo=1&category=${category}&brand=${brand}&kind=${kind}"><span class="white button">首页</span></a>
+            <a href="moreOrOneBrandMoreCommodity?pageNo=${pageinfo.pageNum-1}&category=${category}&brand=${brand}&kind=${kind}"><span class="white button">上一页</span></a>
             <c:forEach items="${pageInfo.navigatepageNums}" var="pageNo">
-                <a href="moreOrOneBrandMoreCommodity?pageNo=${pageNo}&category=${category}&brand=${brand}"><span class="white button">${pageNo}</span></a>
+                <a href="moreOrOneBrandMoreCommodity?pageNo=${pageNo}&category=${category}&brand=${brand}&kind=${kind}"><span class="white button">${pageNo}</span></a>
+<%--                      if ((iNum + 1) + 2 < pageSize - 1 && (iNum + 1) >= 1 && pageSize > 5) {--%>
+<%--                pageList += '<a href="javascript:;">...</a>';--%>
+<%--                }--%>
             </c:forEach>
-            <a href="moreOrOneBrandMoreCommodity?pageNo=${pageInfo.pageNum+1}&category=${category}&brand=${brand}"><span class="white button">下一页</span></a>
-            <a href="moreOrOneBrandMoreCommodity?pageNo=${pageInfo.pages}&category=${category}&brand=${brand}"><span class="white button">末页</span></a>
+
+
+
+<%--            <c:if test="${pageInfo.pages gt 1}">--%>
+<%--&lt;%&ndash;            如果当前页往前查3页不是第2页&ndash;%&gt;--%>
+<%--                <c:if test="${pageInfo.pageNum -3}>2">--%>
+<%--            <li><span class="text">…</span></li>--%>
+<%--                </c:if>--%>
+<%--&lt;%&ndash;      当前页的前3页和后3页&ndash;%&gt;--%>
+<%--        <list ${pageInfo.pageNum -3}..${pageInfo.pageNum +3} as index>--%>
+<%--&lt;%&ndash;        如果位于第一页和最后一页之间&ndash;%&gt;--%>
+<%--        <c:if test="${pageInfo.pageNum == index}">--%>
+<%--        <li class="page-item active "><a class="page-link" href="#">${index}</a>--%>
+<%--        </li>--%>
+<%--        <c:if test="index > 1 && index < ${pageInfo.pages}">--%>
+<%--        <li>--%>
+<%--            <a href="moreOrOneBrandMoreCommodity?pageNo=${pageNo}&category=${category}&brand=${brand}"><span class="white button">${index}</span></a>--%>
+<%--        </li>--%>
+<%--        </c:if>--%>
+<%--    </c:if>--%>
+<%--    </list>--%>
+
+<%--如果当前页往后查3页不是倒数第2页--%>
+<%--<c:if test="${pageinfo.pageNum+3}<${pageInfo.pages-1}">--%>
+<%--<li><span class="text">…</span></li>--%>
+<%--</c:if>--%>
+<%-- </c:if>--%>
+            <a href="moreOrOneBrandMoreCommodity?pageNo=${pageInfo.pageNum+1}&category=${category}&brand=${brand}&kind=${kind}"><span class="white button">下一页</span></a>
+            <a href="moreOrOneBrandMoreCommodity?pageNo=${pageInfo.pages}&category=${category}&brand=${brand}&kind=${kind}"><span class="white button">末页</span></a>
         </div>
     </div>
 </div>

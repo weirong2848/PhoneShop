@@ -314,7 +314,7 @@
                     </div>
                 </div>
                 <div class="price-sum">
-                    <span class="txt">共(顺丰免邮):</span>
+                    <span class="txt">共(包邮):</span>
                     <strong class="price">¥<em id="totalmoney">${totalMoney}.00</em>元</strong>
                 </div>
                 <div class="price-sum">

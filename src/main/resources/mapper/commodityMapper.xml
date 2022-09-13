@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ICommodityMapper">
+
+<!--    查询商品的最低价格-->
+    <select id="findInfoMinMoneyByCommodityId" resultType="Double">
+    select min(price) as minMoney from tb_commodityinfo where commodityId=#{commodityId} and isDelete =0
+    </select>
+
+<!--    根据颜色和编号查询不可选择规格-->
+    <select id="findInfoByCommodityIdAndColor" resultType="String">
+    select memoryCapacity
+    from tb_commodityinfo
+    where commodityId=#{commodityId}
+    and memoryCapacity not in
+    (select memoryCapacity from tb_commodityinfo where commodityId=#{commodityId} and color=#{color} and isDelete =0) and isDelete =0
+    group by memoryCapacity
+    </select>
+
+<!--    根据规格和编号查询不可选择的颜色-->
+    <select id="findInfoByCommodityIdAndMemoryCapacity" resultType="String">
+    select color
+    from tb_commodityinfo
+    where commodityId=#{commodityId}
+    and color not in
+    (select color from tb_commodityinfo where commodityId=#{commodityId} and memoryCapacity=#{memoryCapacity} and isDelete =0) and isDelete =0
+    group by color
+    </select>
+
+<!--    根据颜色、规格、编号查询商品的编号-->
+    <select id="searchInfoMoneyByMemoryCapacityAndColor" resultType="Double">
+    select price from tb_commodityinfo where commodityId=#{commodityId} and memoryCapacity=#{memoryCapacity} and color=#{color} and isDelete =0
+    </select>
+
+<!--    查询一个商品的所有规格-->
+    <select id="findInfoMemoryCapacityBYyCommodityId" resultType="String">
+    select memoryCapacity from tb_commodityinfo where commodityId=#{commodityId} and isDelete =0 group by memoryCapacity order by price
+    </select>
+
+<!--    查询一个商品的所有颜色-->
+    <select id="findInfoColorByCommodityId" resultType="String">
+    select color from tb_commodityinfo where commodityId=#{commodityId}  and isDelete =0 group by color
+    </select>
+
+<!--    根据商品编号查询颜色规格价格-->
+    <select id="findCommodityInfoByCommodityId" resultType="com.entity.CommodityInfo">
+    select * from tb_commodityinfo where commodityId=#{commodityId} and isDelete =0
+    </select>
+
+<!--    根据商品编号查询商品-->
+    <select id="findPhoneByCommodityId" resultType="com.entity.Commodity">
+    select * from tb_commodity where commodityId=#{commodityId} and isDelete =0
+    </select>
+
+<!--    查询全部商品-->
+    <select id="findAllPhone" resultType="com.entity.Commodity">
+    select * from tb_commodity and isDelete =0
+    </select>
+
+<!--    根据型号查询商品-->
+    <select id="findPhoneByModel" resultType="com.entity.Commodity">
+    select * from tb_commodity where model=#{model} and isDelete =0
+    </select>
+
+<!--    根据输入模糊查询商品-->
+    <select id="findSomePhone" resultType="com.entity.Commodity">
+    select * from tb_commodity where model like concat('%',#{world},'%') and isDelete =0
+    </select>
+
+<!--    首页推荐查询-->
+    <select id="findPhoneByCategoryAndNumber" resultType="com.entity.Commodity">
+    select commodityId, picture,model from tb_commodity where category=#{category} and isDelete =0
+        <if test="list.size()>0">
+            and commodityId in
+            <foreach collection="list" index="index" item="list" open="(" separator="," close=")">
+                #{list}
+            </foreach>
+        </if>
+    </select>
+
+<!--    根据品牌查询-->
+    <select id="findPhoneByBrand" resultType="com.entity.Commodity">
+    select * from tb_commodity where brand=#{brand} and category=#{category} and isDelete =0
+    </select>
+
+<!--    根据品类查询商品-->
+    <select id="findCommodityByCategory" resultType="com.entity.Commodity">
+    select * from tb_commodity where category=#{category} and isDelete =0
+    </select>
+
+    <!--    根据品类和分类查询商品-->
+    <select id="findCommodityByCategoryAndKind" resultType="com.entity.Commodity">
+    select * from tb_commodity where category=#{category} and kind=#{kind} and isDelete =0
+    </select>
+
+</mapper>

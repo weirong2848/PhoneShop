@@ -1,13 +1,15 @@
 package com.controller;
 
+import com.entity.Commodity;
+import com.entity.ShoppingCart;
+import com.service.ICommodityService;
+import com.service.IPartsService;
+import com.service.IShoppingCartService;
+import com.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
-import com.entity.Parts;
-import com.entity.Commodity;
-import com.entity.ShoppingCart;
-import com.service.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,7 +38,7 @@ public class ShoppingCartController {
     }
 
     @RequestMapping(path = "addCammodity")
-    public void addphoneCart(@SessionAttribute("username") String username,String model, String price1, String color, String memoryCapacity,Integer number){//添加商品到购物车
+    public void addphoneCart(@SessionAttribute("username") String username,String model, String price1, String color, String memoryCapacity,Integer number,Integer category){//添加商品到购物车
         String id = null;
         UUID uuid = UUID.randomUUID();
         id = uuid.toString();
@@ -45,8 +47,16 @@ public class ShoppingCartController {
         ShoppingCart shoppingCart =  new ShoppingCart();
         List<Commodity> list = commodityService.findPhoneByModel(model);
         for(int i = 0;i<list.size();i++){
-            shoppingCart.setGoodsID(list.get(i).getCommodityNumber());
+            shoppingCart.setGoodsID(list.get(i).getCommodityId());
             shoppingCart.setPicture(list.get(i).getPicture());
+        }
+        if(category == 3){
+            if(color == null){
+                color = "";
+            }
+            if(memoryCapacity == null){
+                memoryCapacity ="";
+            }
         }
         shoppingCart.setModel(model);
         shoppingCart.setColor(color);
@@ -118,42 +128,49 @@ public class ShoppingCartController {
         }
     }
 
-    @RequestMapping(path = "addparts")
-    public void addparts(@SessionAttribute("username") String username,String model,String price,Integer number){//添加配件到购物车
-        String id = null;
-        UUID uuid = UUID.randomUUID();
-        id = uuid.toString();
-        id = id.replace("-", "");
-        double price1 = Double.parseDouble(price);
-        ShoppingCart shoppingCart =  new ShoppingCart();
-        List<Parts> list = partsService.findPartsByModel(model);
-        for(int i = 0;i<list.size();i++){
-            shoppingCart.setGoodsID(list.get(i).getId());
-            shoppingCart.setPicture(list.get(i).getPicture());
-        }
-        String color = " ";
-        String memoryCapacity = " ";
-        shoppingCart.setModel(model);
-        shoppingCart.setColor(color);
-        shoppingCart.setPrice(price1);
-        shoppingCart.setMemoryCapacity(memoryCapacity);
-        shoppingCart.setUsername(username);
-        shoppingCart.setState(0);
-        List<ShoppingCart> list1 = shoppingCartService.findCartByModelAndUsername(model, username,color,memoryCapacity);
-
-        if(null==list1 || list1.size() ==0 ){
-            shoppingCart.setId(id);
-            shoppingCart.setNumber(number);
-            shoppingCartService.insertShop(shoppingCart);
-        }else {
-            for (int i=0;i<list1.size();i++){
-                int num=list1.get(i).getNumber();
-                number = number+num;
-            }
-            shoppingCart.setNumber(number);
-            shoppingCartService.updataShop(color,memoryCapacity,number,model,username);
-        }
-    }
+    /**
+     * 弃用
+//     * @param username
+//     * @param model
+//     * @param price
+//     * @param number
+     */
+//    @RequestMapping(path = "addparts")
+//    public void addparts(@SessionAttribute("username") String username,String model,String price,Integer number){//添加配件到购物车
+//        String id = null;
+//        UUID uuid = UUID.randomUUID();
+//        id = uuid.toString();
+//        id = id.replace("-", "");
+//        double price1 = Double.parseDouble(price);
+//        ShoppingCart shoppingCart =  new ShoppingCart();
+//        List<Commodity> list = commodityService.findPhoneByModel(model);
+//        for(int i = 0;i<list.size();i++){
+//            shoppingCart.setGoodsID(list.get(i).getCommodityId());
+//            shoppingCart.setPicture(list.get(i).getPicture());
+//        }
+//        String color = " ";
+//        String memoryCapacity = " ";
+//        shoppingCart.setModel(model);
+//        shoppingCart.setColor(color);
+//        shoppingCart.setPrice(price1);
+//        shoppingCart.setMemoryCapacity(memoryCapacity);
+//        shoppingCart.setUsername(username);
+//        shoppingCart.setState(0);
+//        List<ShoppingCart> list1 = shoppingCartService.findCartByModelAndUsername(model, username,color,memoryCapacity);
+//
+//        if(null==list1 || list1.size() ==0 ){
+//            shoppingCart.setId(id);
+//            shoppingCart.setNumber(number);
+//            shoppingCartService.insertShop(shoppingCart);
+//        }else {
+//            for (int i=0;i<list1.size();i++){
+//                int num=list1.get(i).getNumber();
+//                number = number+num;
+//            }
+//            shoppingCart.setNumber(number);
+//            shoppingCartService.updataShop(color,memoryCapacity,number,model,username);
+//        }
+//    }
 
     @RequestMapping("changeCartIfChecked")
     public void changeCartIfChecked(@SessionAttribute("username") String username,String state){//更改当前用户下所有购物车商品的状态

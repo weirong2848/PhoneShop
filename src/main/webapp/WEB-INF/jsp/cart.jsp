@@ -200,7 +200,7 @@
                 <b>|</b>
                 <a href="../main/moreOrOneBrandMoreCommodity?category=2">平板电脑</a>
                 <b>|</b>
-                <a href="../main/moreOrOneKindMoreParts">配件</a>
+                <a href="../main/moreOrOneBrandMoreCommodity?category=3">配件</a>
             </p>
         </div>
         <div class="footer-bd">

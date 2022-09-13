@@ -190,7 +190,7 @@
                 <a href="../main/moreOrOneBrandMoreCommodity?category=2" style="width: 25%;height: 100%;background-color: #eee;text-align: center;font-size: 16px;line-height: 200%;float: left;z-index: 5;color: black">
                     <span>平板电脑</span>
                 </a>
-                <a href="../main/moreOrOneKindMoreParts" style="width: 25%;height: 100%;background-color: #eee;text-align: center;font-size: 16px;line-height: 200%;float: left;z-index: 5;color: black">
+                <a href="../main/moreOrOneBrandMoreCommodity?category=3" style="width: 25%;height: 100%;background-color: #eee;text-align: center;font-size: 16px;line-height: 200%;float: left;z-index: 5;color: black">
                     <span>配件</span>
                 </a>
             </div>

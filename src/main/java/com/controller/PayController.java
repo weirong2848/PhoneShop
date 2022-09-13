@@ -277,7 +277,7 @@ public class PayController {
         ShoppingCart shoppingCart =  new ShoppingCart();
         List<Commodity> list = commodityService.findPhoneByModel(model);
         for(int i = 0;i<list.size();i++){
-            shoppingCart.setGoodsID(list.get(i).getCommodityNumber());
+            shoppingCart.setGoodsID(list.get(i).getCommodityId());
             shoppingCart.setPicture(list.get(i).getPicture());
         }
         shoppingCart.setId(id);

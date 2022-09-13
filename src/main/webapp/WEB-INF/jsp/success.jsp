@@ -106,11 +106,11 @@
                     <li class="cates" mt-ct="list03">
                         <h3 style="cursor: default">配件</h3>
                         <p>
-                            <a href="../main/moreOrOneKindMoreParts?kind=耳机">耳机</a>
-                            <a href="../main/moreOrOneKindMoreParts?kind=保护壳">保护壳</a>
-                            <a href="../main/moreOrOneKindMoreParts?kind=充电宝">充电宝</a>
-                            <a href="../main/moreOrOneKindMoreParts?kind=充电器">充电器</a>
-                            <a href="../main/moreOrOneKindMoreParts?kind=平板配件">平板配件</a>
+                            <a href="../main/moreOrOneBrandMoreCommodity?kind=耳机&category=3">耳机</a>
+                            <a href="../main/moreOrOneBrandMoreCommodity?kind=保护壳&category=3">保护壳</a>
+                            <a href="../main/moreOrOneBrandMoreCommodity?kind=充电宝&category=3">充电宝</a>
+                            <a href="../main/moreOrOneBrandMoreCommodity?kind=充电器&category=3">充电器</a>
+                            <a href="../main/moreOrOneBrandMoreCommodity?kind=平板配件&category=3">平板配件</a>
                             <i style=" font-family:'宋体';color:#666; line-height:23px; padding-right:20px; font-size:14px; float:right">></i>
                         </p>
                     </li>
@@ -146,12 +146,12 @@
                 <div class="import_list b-list03">
                     <dt>配件：</dt>
                     <dd>
-                        <a href="../main/moreOrOneKindMoreParts">全部配件</a>
-                        <a href="../main/moreOrOneKindMoreParts?kind=耳机">耳机</a>
-                        <a href="../main/moreOrOneKindMoreParts?kind=保护壳">保护壳</a>
-                        <a href="../main/moreOrOneKindMoreParts?kind=充电宝">充电宝</a>
-                        <a href="../main/moreOrOneKindMoreParts?kind=充电器">充电器</a>
-                        <a href="../main/moreOrOneKindMoreParts?kind=平板配件">平板配件</a>
+                        <a href="../main/moreOrOneBrandMoreCommodity?category=3">全部配件</a>
+                        <a href="../main/moreOrOneBrandMoreCommodity?category=3&kind=耳机">耳机</a>
+                        <a href="../main/moreOrOneBrandMoreCommodity?category=3&kind=保护壳">保护壳</a>
+                        <a href="../main/moreOrOneBrandMoreCommodity?category=3&kind=充电宝">充电宝</a>
+                        <a href="../main/moreOrOneBrandMoreCommodity?category=3&kind=充电器">充电器</a>
+                        <a href="../main/moreOrOneBrandMoreCommodity?category=3&kind=平板配件">平板配件</a>
                     </dd>
                 </div>
             </div>
@@ -161,7 +161,7 @@
             <a href="../main/success">首页</a>
             <a href="../main/moreOrOneBrandMoreCommodity?category=1">手机</a>
             <a href="../main/moreOrOneBrandMoreCommodity?category=2">平板电脑</a>
-            <a href="../main/moreOrOneKindMoreParts">配件</a>
+            <a href="../main/moreOrOneBrandMoreCommodity?category=3">配件</a>
             <%--            <a href="#">会员</a>--%>
         </div>
     </nav>
@@ -170,27 +170,27 @@
 <div id="banner_tabs" class="flexslider">
     <ul class="slides">
         <li>
-            <a title="" target="_blank" href="../main/inCommodity?model=小米CC9 Pro">
+            <a title="" target="_blank" href="../main/inCommodity?commodityId=1306">
                 <img width="1920" height="500" alt=""
                      style="background:#e1211e url(../images/小米CC9pro.1.jpg) no-repeat center;"
                      src="../images/alpha.png">
             </a>
         </li>
         <li>
-            <a title=""target="_blank" href="../main/inCommodity?model=苹果 iPad Pro 11英寸">
+            <a title=""target="_blank" href="../main/inCommodity?commodityId=2102">
                 <img width="1920" height="500" alt=""
                      style="background:#900 url(../images/ipd11.1.jpg) no-repeat center;" src="../images/alpha.png">
             </a>
         </li>
         <li>
-            <a title="" target="_blank" target="_blank" href="../main/inCommodity?model=华为 Mate30Pro">
+            <a title="" target="_blank" target="_blank" href="../main/inCommodity?commodityId=1201">
                 <img width="1920" height="500" alt=""
                      style="background:#e1211e url(../images/华为30pro.1.jpg) no-repeat center;"
                      src="../images/alpha.png">
             </a>
         </li>
         <li>
-            <a title="" target="_blank" href="../main/inCommodity?model=华为MatePad Pro10.8英寸">
+            <a title="" target="_blank" href="../main/inCommodity?commodityId=2202">
                 <img width="1920" height="500" alt=""
                      style="background:#900 url(../images/华为pad.1.jpg) no-repeat center;" src="../images/alpha.png">
             </a>
@@ -256,15 +256,15 @@
             <tr>
                 <ul>
                     <li>
-                        <a href="../main/inCommodity?model=${phone.model}">
+                        <a href="../main/inCommodity?commodityId=${phone.commodityId}">
                             <img src="${phone.picture}"
                                  style=" margin:0 auto; display:block; width:220px; height:220px">
                         </a>
                         <light1>
                             <img src="../images/saoguang.png">
                         </light1>
-                        <span><td>${phone.price1}</td>元起</span>
-                        <a href="../main/inCommodity?model=${phone.model}">
+                        <span><td>${phone.minPrice}</td>元起</span>
+                        <a href="../main/inCommodity?commodityId=${phone.commodityId}">
                             <p>
                             <td>${phone.model}</td>
                             </p>
@@ -295,15 +295,15 @@
             <tr>
                 <ul>
                     <li>
-                        <a href="../main/inCommodity?model=${tablepc.model}">
+                        <a href="../main/inCommodity?commodityId=${tablepc.commodityId}">
                             <img src="${tablepc.picture}"
                                  style=" margin:0 auto; display:block; width:220px; height:220px">
                         </a>
                         <light1>
                             <img src="../images/saoguang.png">
                         </light1>
-                        <span><td>${tablepc.price1}</td>元起</span>
-                        <a href="../main/inCommodity?model=${tablepc.model}">
+                        <span><td>${tablepc.minPrice}</td>元起</span>
+                        <a href="../main/inCommodity?commodityId=${tablepc.commodityId}">
                             <p>
                             <td>${tablepc.model}</td>
                             </p>
@@ -323,7 +323,7 @@
             </a>
             <div class="detailed_navigation">
                 <ul>
-                    <a href="../main/moreOrOneKindMoreParts">查看更多</a>
+                    <a href="../main/moreOrOneBrandMoreCommodity?category=3">查看更多</a>
                 </ul>
             </div>
         </span>
@@ -333,15 +333,15 @@
             <tr>
                 <ul>
                     <li>
-                        <a href="../main/inparts?model=${parts.model}">
+                        <a href="../main/inCommodity?commodityId=${parts.commodityId}">
                             <img src="${parts.picture}"
                                  style=" margin:0 auto; display:block; width:220px; height:220px">
                         </a>
                         <light1>
                             <img src="../images/saoguang.png">
                         </light1>
-                        <span><td>${parts.price}</td>元</span>
-                        <a href="../main/inparts?model=${parts.model}">
+                        <span><td>${parts.minPrice}</td>元</span>
+                        <a href="../main/inCommodity?commodityId=${parts.commodityId}">
                             <p>
                             <td>${parts.model}</td>
                             </p>

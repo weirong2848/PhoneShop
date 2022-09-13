@@ -4,6 +4,9 @@ import com.entity.Parts;
 
 import java.util.List;
 
+/**
+ * 弃用
+ */
 public interface IPartsService {
 
     List<Parts> findAllParts();
